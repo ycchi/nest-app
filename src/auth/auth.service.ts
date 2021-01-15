@@ -1,5 +1,6 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { sign } from 'jsonwebtoken';
+import { UsersService } from '../users/users.service';
 
 export enum Provider {
   GOOGLE = 'google',
@@ -10,7 +11,7 @@ export class AuthService {
   private readonly JWT_SECRET_KEY = 'VERY_SECRET_KEY'; // <- replace this with your secret key
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  constructor(/*private readonly usersService: UsersService*/) {}
+  constructor(private readonly usersService: UsersService) {}
 
   async validateOAuthLogin(
     thirdPartyId: string,
