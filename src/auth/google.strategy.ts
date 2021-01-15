@@ -23,6 +23,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     accessToken: string,
     refreshToken: string,
     profile,
+    // eslint-disable-next-line @typescript-eslint/ban-types
     done: Function,
   ) {
     try {

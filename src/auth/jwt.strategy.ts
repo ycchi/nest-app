@@ -11,6 +11,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/ban-types
   async validate(payload, done: Function) {
     try {
       // You could add a function to the authService to verify the claims of the token:

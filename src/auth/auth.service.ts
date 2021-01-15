@@ -9,6 +9,7 @@ export enum Provider {
 export class AuthService {
   private readonly JWT_SECRET_KEY = 'VERY_SECRET_KEY'; // <- replace this with your secret key
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor(/*private readonly usersService: UsersService*/) {}
 
   async validateOAuthLogin(
