@@ -11,8 +11,8 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @Get('one')
-  getOne(): Promise<User> {
-    return this.usersService.findOne('22');
+  @Get('/:id')
+  getOne(@Param('id') userId: string): Promise<User> {
+    return this.usersService.findOne(userId);
   }
 }
