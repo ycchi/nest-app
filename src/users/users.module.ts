@@ -8,7 +8,7 @@ import { UserSubscriber } from './User.subscriber';
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
   // exports TypeOrmModule to use the repository outside of the module
-  exports: [TypeOrmModule],
+  exports: [TypeOrmModule, UsersService],
   providers: [UsersService, UserSubscriber],
   controllers: [UsersController],
 })

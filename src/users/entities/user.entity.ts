@@ -13,4 +13,10 @@ export class User {
 
   @Column({ default: true, name: 'is_active' })
   isActive: boolean;
+
+  @Column({ length: 255, name: 'third_party_id' })
+  thirdPartyId: string;
+
+  @Column({ length: 255, name: 'provider' })
+  provider: string;
 }

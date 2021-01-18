@@ -1,6 +1,7 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { sign } from 'jsonwebtoken';
 import { UsersService } from '../users/users.service';
+import { User } from '../users/entities/user.entity';
 
 export enum Provider {
   GOOGLE = 'google',
@@ -13,17 +14,19 @@ export class AuthService {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor(private readonly usersService: UsersService) {}
 
-  async validateOAuthLogin(
-    thirdPartyId: string,
-    provider: Provider,
-  ): Promise<string> {
+  async validateOAuthLogin(profile): Promise<string> {
+    const thirdPartyId = profile.id;
+    const provider = profile.provider;
+
     try {
       // You can add some registration logic here,
       // to register the user using their thirdPartyId (in this case their googleId)
-      // let user: IUser = await this.usersService.findOneByThirdPartyId(thirdPartyId, provider);
+      let user = await this.usersService.findOneByThirdPartyId(
+        thirdPartyId,
+        provider,
+      );
 
-      // if (!user)
-      // user = await this.usersService.registerOAuthUser(thirdPartyId, provider);
+      if (!user) user = await this.usersService.registerOAuthUser(profile);
 
       const payload = {
         thirdPartyId,

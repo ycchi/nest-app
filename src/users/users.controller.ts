@@ -15,4 +15,9 @@ export class UsersController {
   getOne(@Param('id') userId: string): Promise<User> {
     return this.usersService.findOne(userId);
   }
+
+  // @Get('/thirdpartyid/:id')
+  // getOneByTPI(@Param('id') userId: string) {
+  //   return this.usersService.findOneByThirdPartyId(userId, 'google');
+  // }
 }
