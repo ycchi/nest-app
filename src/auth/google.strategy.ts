@@ -10,11 +10,11 @@ config();
 export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
   constructor(private readonly authService: AuthService) {
     super({
-      clientID: process.env.GOOGLE_CLIENT_ID, // Not my real client secret, see your own application credentials at Google!
-      clientSecret: process.env.GOOGLE_SECRET, // Not my real client secret, see your own application credentials at Google!
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
       callbackURL: 'http://localhost:3000/auth/google/callback',
       passReqToCallback: true,
-      scope: ['profile'],
+      scope: ['profile', 'email'],
     });
   }
 
@@ -27,11 +27,10 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     done: Function,
   ) {
     try {
-      // console.log(profile);
-
       const jwt: string = await this.authService.validateOAuthLogin(profile);
       const user = {
         jwt,
+        profile,
       };
 
       done(null, user);

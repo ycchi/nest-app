@@ -71,3 +71,8 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+## References
+- OAuth - https://medium.com/@nielsmeima/auth-in-nest-js-and-angular-463525b6e071
+- JWT - https://blog.angular-university.io/angular-jwt-authentication/
